@@ -1,0 +1,31 @@
+ -- About --
+
+This is a library of utility functions that are useful in large, distributed
+computing environments. This is work in progress, and the functionality and API
+are subject to change. The terms in the "LICENSE" file apply for using this
+software. Inquiries can be sent to <nompelis@umn.edu>.
+
+----------------------------------------------------------------------------
+
+ -- API calls --
+
+int inMPI_DSDE_Global_WindowExchange( int nproc,
+                                      int irank,
+                                      MPI_Comm comm,
+                                      const int *isend,
+                                      int *irecv);
+
+nproc = number of MPI ranks used
+irank = current process rank
+comm = a communicator (like MPI_COMM_WORLD)
+isend = a pointer to an array of integer constants sized by "nproc"
+irecv = a pointer to an array of integers sized by "nproc"
+
+Each non-zero integer found in the array pointed to by isend is transmitted
+to the array pointed to by irecv on the process with rank corresponding to
+the position in the isend array.
+
+----------------------------------------------------------------------------
+
+IN 2016/08/31
+
