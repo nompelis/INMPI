@@ -6,8 +6,8 @@ are subject to change. The terms in the "LICENSE" file apply for using this
 software. Inquiries can be sent to <nompelis@umn.edu>.
 
 ----------------------------------------------------------------------------
-
  -- API calls --
+-----------------
 
 int inMPI_DSDE_Global_WindowExchange( int nproc,
                                       int irank,
@@ -15,15 +15,34 @@ int inMPI_DSDE_Global_WindowExchange( int nproc,
                                       const int *isend,
                                       int *irecv);
 
-nproc = number of MPI ranks used
-irank = current process rank
-comm = a communicator (like MPI_COMM_WORLD)
-isend = a pointer to an array of integer constants sized by "nproc"
-irecv = a pointer to an array of integers sized by "nproc"
+ nproc = number of MPI ranks used
+ irank = current process rank
+ comm = a communicator (like MPI_COMM_WORLD)
+ isend = a pointer to an array of integer constants sized by "nproc"
+ irecv = a pointer to an array of integers sized by "nproc"
 
 Each non-zero integer found in the array pointed to by isend is transmitted
 to the array pointed to by irecv on the process with rank corresponding to
 the position in the isend array.
+
+-----------------
+
+int inMPI_DPmutex_Init( MPI_Comm comm, int iverbose );
+
+ comm = MPI communicator (not MPI_COMM_NULL) on which the distributed-parallel
+        mutex is meant to operate
+ iverbose = integer that should idealy be zero
+
+int inMPI_DPmutex_Lock();
+
+int inMPI_DPmutex_Unlock();
+
+int inMPI_DPmutex_Term();
+
+Initializes a distributed parallel mutual exclusion (mutex) variable on a
+particular set of MPI processes associated wiht a given communicator. Locking
+and unlocking return zero on success. Termination unlocks the mutex regardless
+of its state. Both initialization and termination are collective calls.
 
 ----------------------------------------------------------------------------
 
