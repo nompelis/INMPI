@@ -44,7 +44,35 @@ particular set of MPI processes associated wiht a given communicator. Locking
 and unlocking return zero on success. Termination unlocks the mutex regardless
 of its state. Both initialization and termination are collective calls.
 
+-----------------
+
+int inMPI_DPsemaphore_Init( MPI_Comm comm, int imaster, int iverbose );
+
+ comm = MPI communicator (not MPI_COMM_NULL) on which the distributed-parallel
+        mutex is meant to operate
+ imaster = rank of the MPI process that is the semaphore handler
+ iverbose = integer that should idealy be zero
+
+int inMPI_DPsemaphore_SetNumber( long icount );
+
+ icount = positive integer representing the extent of the resource
+
+int inMPI_DPsemaphore_Request( long *inumber );
+
+ inumber = the returned non-zero integer of the state of the semaphore
+
+int inMPI_DPsemaphore_Term();
+
+Initializes a distributed parallel semaphore on a particular set of MPI
+processes associated wiht a given communicator. The master process that
+can control the semaphore's counter must be specified at initialization.
+Only the master process can (re)set the semaphore's internal counter.
+The requested number is returned to be a non-zero integer; appropriate
+error trapping returns error codes. Instantiation and termination are
+collective operations. Re-setting of the semaphore's internal counter can
+be done at any time.
+
 ----------------------------------------------------------------------------
 
-IN 2016/08/31
+IN 2016/12/11
 

@@ -10,7 +10,8 @@ all: lib
 lib:
 	$(MPICC) -c $(COPTS) indsde.c
 	$(MPICC) -c $(COPTS) inmpi_mutex.c
-	ar rsc libINmpi.a indsde.o inmpi_mutex.o 
+	$(MPICC) -c $(COPTS) inmpi_sema.c
+	ar rsc libINmpi.a indsde.o inmpi_mutex.o inmpi_sema.o 
 	$(MPICC) $(LINK_OPTS) indsde.o
 
 clean:
