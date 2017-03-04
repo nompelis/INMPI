@@ -40,7 +40,7 @@ int inMPI_DPmutex_Unlock();
 int inMPI_DPmutex_Term();
 
 Initializes a distributed parallel mutual exclusion (mutex) variable on a
-particular set of MPI processes associated wiht a given communicator. Locking
+particular set of MPI processes associated with a given communicator. Locking
 and unlocking return zero on success. Termination unlocks the mutex regardless
 of its state. Both initialization and termination are collective calls.
 
@@ -64,7 +64,7 @@ int inMPI_DPsemaphore_Request( long *inumber );
 int inMPI_DPsemaphore_Term();
 
 Initializes a distributed parallel semaphore on a particular set of MPI
-processes associated wiht a given communicator. The master process that
+processes associated with a given communicator. The master process that
 can control the semaphore's counter must be specified at initialization.
 Only the master process can (re)set the semaphore's internal counter.
 The requested number is returned to be a non-zero integer; appropriate
