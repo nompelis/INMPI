@@ -12,7 +12,7 @@ lib:
 	$(MPICC) -c $(COPTS) inmpi_mutex.c
 	$(MPICC) -c $(COPTS) inmpi_sema.c
 	ar rsc libINmpi.a indsde.o inmpi_mutex.o inmpi_sema.o 
-	$(MPICC) $(LINK_OPTS) indsde.o
+	$(MPICC) $(LINK_OPTS) indsde.o inmpi_mutex.o inmpi_sema.o
 
 clean:
 	rm -Rf *.so *.a *.o 
