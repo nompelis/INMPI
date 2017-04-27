@@ -36,6 +36,10 @@
 #include <mpi.h>
 #include <pthread.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct my_semaphore {
    int _0x0000011;
    int _0x0000110;
@@ -57,6 +61,9 @@ int inMPI_DPsemaphore_Request( long *inum );
 int inMPI_DPsemaphore_Term();
 
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

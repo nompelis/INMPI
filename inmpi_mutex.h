@@ -36,6 +36,10 @@
 #include <mpi.h>
 #include <pthread.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct my_dpmutex {
    int _0x0000100;
    int _0x0000101;
@@ -56,6 +60,9 @@ int inMPI_DPmutex_Init( MPI_Comm _0x0001111, int _0x0000100ose );
 
 int inMPI_DPmutex_Term();
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

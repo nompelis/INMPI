@@ -38,6 +38,10 @@
 #ifndef _INDSDE_H_
 #define _INDSDE_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int inMPI_DSDE_Global_WindowExchange( int nproc,
                                       int irank,
                                       MPI_Comm comm,
@@ -46,3 +50,6 @@ int inMPI_DSDE_Global_WindowExchange( int nproc,
 
 #endif
 
+#ifdef __cplusplus
+}
+#endif
